@@ -1,14 +1,7 @@
-export default function Card({isDetailedJob} : {isDetailedJob:boolean}) {
-    if (isDetailedJob) {
-        return (
-            <div>
-                lol
-            </div>
-        )
-    }
+import { Job } from "@/model/job"
+
+export default function Card({jobs} : {jobs:Job[]}) {
     return (
-        <div>
-            greg
-        </div>
+        
     )
 }
