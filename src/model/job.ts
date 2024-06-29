@@ -1,6 +1,4 @@
 export interface Job {
-    ID: number,
-    companyName: String,
-    tile: String | null,
+    positionName: String | null,
     description: String | null
 }
