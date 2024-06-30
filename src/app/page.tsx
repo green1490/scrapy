@@ -1,21 +1,26 @@
-"use client"
-
 import List from '@/components/list';
-import { useEffect, useState } from 'react';
+import { CareerSite } from '@/model/careerSite';
+import { ApiError } from 'next/dist/server/api-utils';
 
-export default function Home() {
-  const [companies, setCompanies] = useState()
-  useEffect(() => {
-    const companies = fetch('')
-  })
-  
+async function listCompaniesData():Promise<CareerSite[]> {
+  const companiesURL = process.env.NEXT_PUBLIC_COMPANY_URL
+  if (companiesURL === undefined) {
+    console.log(companiesURL)
+    throw new ApiError(400, 'The url doesnt have any value!')
+  }
+  const companies = await fetch(companiesURL)
+  if (!companies.ok) {
+    throw new Error('Failed to fetch data!')
+  }
+  return await companies.json()
+}
+
+export default async function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="">
       <div>
         <List
-          careerSites={[
-            
-          ]}
+          careerSites={await listCompaniesData()}
         />
       </div>
     </main>
