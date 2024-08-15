@@ -1,3 +1,4 @@
-BUD,[https://karrier.bud.hu/search/]
-CIVIL,[https://karrier.civil.hu/allasok?q=Y291bnRpZXMlNUIlNUQlM0RCdWRhcGVzdCUyNguuzzuuzz=#!]
-Praktiker,[https://karrier.praktiker.hu/allasaink?category_id=&shop_id=332,https://karrier.praktiker.hu/allasaink?category_id=&shop_id=321,https://karrier.praktiker.hu/allasaink?category_id=&shop_id=330]
+name,urls
+BUD,https://karrier.bud.hu/search/
+CIVIL,https://karrier.civil.hu/allasok?q=Y291bnRpZXMlNUIlNUQlM0RCdWRhcGVzdCUyNguuzzuuzz=#!
+Praktiker,"https://karrier.praktiker.hu/allasaink?category_id=&shop_id=332,https://karrier.praktiker.hu/allasaink?category_id=&shop_id=321,https://karrier.praktiker.hu/allasaink?category_id=&shop_id=330"
