@@ -1,14 +1,14 @@
 mod model;
 mod controller;
+mod view;
 
-use controller::init::init;
+use std::io::{stdout, Error};
+use controller::csv_reader::csv_reader;
 use model::company::Company;
-use csv::Error;
-use csv::Reader;
+use view::main_view::main_view;
 
-fn main() {
-    match init() {
-        Ok(companies) => println!("success"),
-        Err(error) => println!("error")
-    }
+fn main() -> Result<(), Error> {
+    // observer for the app state
+    main_view()?;
+    Ok(())
 }
