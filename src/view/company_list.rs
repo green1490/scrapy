@@ -1,7 +1,8 @@
-use ratatui::{style::Stylize, widgets::{Paragraph, Widget}};
+use ratatui::{style::Stylize, widgets::{List, Paragraph, Widget}};
+use crate::model::company::Company;
 
-pub fn company_list() -> impl Widget {
-    Paragraph::new("Hello Ratatui! (press 'q' to quit)")
-        .white()
-        .on_blue()
+pub fn company_list(companies: Vec<Company>) -> impl Widget {
+    let item = ["test1"];
+    let list = List::new(item);
+    list
 }

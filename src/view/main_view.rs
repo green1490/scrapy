@@ -21,7 +21,8 @@ pub fn main_view() -> Result<(), Error> {
         terminal.draw(|frame| {
             let area = frame.area();
             frame.render_widget(
-        company_list(),
+                // change it to use reference
+        company_list(vec![]),
                 area,
             );
         })?;

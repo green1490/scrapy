@@ -1,6 +1,7 @@
 mod model;
 mod controller;
 mod view;
+mod interface;
 
 use std::io::{stdout, Error};
 use controller::csv_reader::csv_reader;
