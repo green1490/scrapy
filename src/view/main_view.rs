@@ -1,4 +1,5 @@
 use std::io::{stdout, Error};
+use crate::csv_reader;
 use ratatui::{
     backend::CrosstermBackend,
     crossterm::{
@@ -12,6 +13,8 @@ use ratatui::{
 use super::company_list::company_list;
 
 pub fn main_view() -> Result<(), Error> {
+    let companies = csv_reader()?;
+    
     stdout().execute(EnterAlternateScreen)?;
     enable_raw_mode()?;
     let mut terminal = Terminal::new(CrosstermBackend::new(stdout()))?;
@@ -22,7 +25,7 @@ pub fn main_view() -> Result<(), Error> {
             let area = frame.area();
             frame.render_widget(
                 // change it to use reference
-        company_list(vec![]),
+        company_list(&companies),
                 area,
             );
         })?;

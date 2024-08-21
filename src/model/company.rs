@@ -2,7 +2,7 @@ use serde::Deserialize;
 
 #[derive(Deserialize, Debug)]
 pub struct Company {
-    name: String,
+    pub name: String,
     urls: Vec<String>
 }
 
@@ -14,3 +14,4 @@ impl Company {
         }
     }
 }
+
