@@ -1,4 +1,4 @@
-use ratatui::{style::{Style, Stylize}, widgets::{Block, List, ListState, Padding, StatefulWidget}};
+use ratatui::{style::{Style, Stylize}, widgets::{Block, List, ListState, StatefulWidget}};
 use crate::model::company::Company;
 
 pub fn company_list(companies: &Vec<Company>) -> impl StatefulWidget<State = ListState> {

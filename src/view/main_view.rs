@@ -1,14 +1,14 @@
 use std::io::{stdout, Error};
 use crate::csv_reader;
+use super::company_list::company_list;
 use ratatui::{
     backend::CrosstermBackend, crossterm::{
         event::{self, KeyCode, KeyEventKind},
         terminal::{disable_raw_mode, enable_raw_mode, EnterAlternateScreen, LeaveAlternateScreen},
         ExecutableCommand,
-    }, widgets::ListState, Terminal
+    }, layout::{Constraint, Direction, Layout}, text::Text, widgets::ListState, Terminal
 };
 
-use super::company_list::company_list;
 
 pub fn main_view() -> Result<(), Error> {
     let companies = csv_reader()?;
@@ -22,11 +22,18 @@ pub fn main_view() -> Result<(), Error> {
     
     loop {
         terminal.draw(|frame| {
-            let area = frame.area();
+            let layout = Layout::default()
+            .direction(Direction::Horizontal)
+            .constraints(vec![
+                Constraint::Percentage(20),
+                Constraint::Percentage(80),
+                ])
+            .split(frame.area());
+
             frame.render_stateful_widget(
-        company_list(&companies),
-                area,
-                &mut state
+                company_list(&companies),
+                layout[0],
+                &mut state,
             );
         })?;
 
