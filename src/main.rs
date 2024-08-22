@@ -3,7 +3,7 @@ mod controller;
 mod view;
 mod interface;
 
-use std::io::{stdout, Error};
+use std::io::Error;
 use controller::csv_reader::csv_reader;
 use model::company::Company;
 use view::main_view::main_view;
