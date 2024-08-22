@@ -1,19 +1,19 @@
 use std::io::{stdout, Error};
 use crate::csv_reader;
 use ratatui::{
-    backend::CrosstermBackend,
-    crossterm::{
+    backend::CrosstermBackend, crossterm::{
         event::{self, KeyCode, KeyEventKind},
         terminal::{disable_raw_mode, enable_raw_mode, EnterAlternateScreen, LeaveAlternateScreen},
         ExecutableCommand,
-    },
-    Terminal,
+    }, widgets::ListState, Terminal
 };
 
 use super::company_list::company_list;
 
 pub fn main_view() -> Result<(), Error> {
     let companies = csv_reader()?;
+    //put into app state
+    let mut state = ListState::default();
     
     stdout().execute(EnterAlternateScreen)?;
     enable_raw_mode()?;
@@ -23,10 +23,10 @@ pub fn main_view() -> Result<(), Error> {
     loop {
         terminal.draw(|frame| {
             let area = frame.area();
-            frame.render_widget(
-                // change it to use reference
+            frame.render_stateful_widget(
         company_list(&companies),
                 area,
+                &mut state
             );
         })?;
 
@@ -34,6 +34,14 @@ pub fn main_view() -> Result<(), Error> {
             if let event::Event::Key(key) = event::read()? {
                 if key.kind == KeyEventKind::Press && key.code == KeyCode::Char('q') {
                     break;
+                }
+
+                else if key.kind == KeyEventKind::Press && key.code == KeyCode::Down {
+                    state.select_next();
+                }
+
+                else if key.kind == KeyEventKind::Press && key.code == KeyCode::Up {
+                    state.select_previous();
                 }
             }
         }
