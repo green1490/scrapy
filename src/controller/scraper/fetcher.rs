@@ -1,24 +1,28 @@
+use std::collections::HashMap;
 use crate::model::company::Company;
+use super::fetch_item::FetchItem;
 
-use super::fetch_item::{self, FetchItem};
 
-//storing as hashmap
 pub struct Fetcher {
-    fetch_items: Vec<FetchItem>
+    fetch_items: HashMap<String, FetchItem>
 }
 
 impl Fetcher {
     pub fn new() -> Self {
-        Fetcher { 
-            fetch_items: vec![]
+        Fetcher {
+            fetch_items: HashMap::new()
         }
     }
 
     pub fn add(mut self,company: Company) -> Self {
-        todo!();
+        self.fetch_items.insert(
+            company.name.clone(),
+            FetchItem::new(company)
+        );
+        self
     }
 
-    pub fn remove(&mut self, url:String) {
-        todo!("implement remove");
+    pub fn remove(&mut self, company_name:String) {
+        self.fetch_items.remove(&company_name);
     }
 }
