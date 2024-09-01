@@ -6,6 +6,7 @@ pub fn csv_reader() -> Result<Vec<Company>,io::Error> {
     let mut rdr = csv::Reader::from_path("src/data/pest.csv")?;
     let record_iter = rdr.records();
     // error if there is missing field
+    // scrapers hashmap[company_name] -> fetcher
     for record in record_iter {
         let company = record?.deserialize::<Company>(None)?;
         companies.push(company);

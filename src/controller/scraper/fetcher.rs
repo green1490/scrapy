@@ -1,6 +1,5 @@
 use std::collections::HashMap;
-use crate::model::company::Company;
-use super::fetch_item::FetchItem;
+use crate::model::{company::Company, fetch_item::FetchItem};
 
 
 pub struct Fetcher {
@@ -22,7 +21,13 @@ impl Fetcher {
         self
     }
 
-    pub fn remove(&mut self, company_name:String) {
-        self.fetch_items.remove(&company_name);
+    // removes if the status is 404
+    // observer?
+    fn remove(&mut self, company_name: &str) {
+        self.fetch_items.remove(company_name);
     }
+
+    // fn fetch(company_name: &str) -> String {
+    //     fetch_items[company_name].fetch() -> match and if None remove from hashmap
+    // }
 }

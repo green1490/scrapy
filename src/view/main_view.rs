@@ -6,7 +6,7 @@ use ratatui::{
         event::{self, KeyCode, KeyEventKind},
         terminal::{disable_raw_mode, enable_raw_mode, EnterAlternateScreen, LeaveAlternateScreen},
         ExecutableCommand,
-    }, layout::{Constraint, Direction, Layout}, text::Text, widgets::ListState, Terminal
+    }, layout::{Constraint, Direction, Layout}, widgets::ListState, Terminal
 };
 
 

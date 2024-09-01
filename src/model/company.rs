@@ -3,14 +3,14 @@ use serde::Deserialize;
 #[derive(Deserialize, Debug)]
 pub struct Company {
     pub name: String,
-    urls: Vec<String>
+    url: String
 }
 
 impl Company {
-    pub fn new(name:String, urls:Vec<String>) -> Self {
+    pub fn new(name:String, url: String) -> Self {
         Company{
             name,
-            urls
+            url
         }
     }
 }
