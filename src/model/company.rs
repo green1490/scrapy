@@ -3,7 +3,7 @@ use serde::Deserialize;
 #[derive(Deserialize, Debug)]
 pub struct Company {
     pub name: String,
-    url: String
+    pub url: String
 }
 
 impl Company {

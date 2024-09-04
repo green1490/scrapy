@@ -13,20 +13,20 @@ impl Fetcher {
         }
     }
 
-    pub fn add(mut self,company: Company) -> Self {
-        self.fetch_items.insert(
-            company.name.clone(),
-            FetchItem::new(company)
-        );
-        self
-    }
+    // pub fn add(mut self,company: Company) -> Self {
+    //     self.fetch_items.insert(
+    //         company.name.clone(),
+    //         FetchItem::new(company)
+    //     );
+    //     self
+    // }
 
     // removes if the status is 404
     // observer?
     fn remove(&mut self, company_name: &str) {
         self.fetch_items.remove(company_name);
     }
-
+    
     // fn fetch(company_name: &str) -> String {
     //     fetch_items[company_name].fetch() -> match and if None remove from hashmap
     // }

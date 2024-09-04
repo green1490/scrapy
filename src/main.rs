@@ -2,6 +2,7 @@ mod model;
 mod controller;
 mod view;
 mod interface;
+mod site_scrapers;
 
 use std::io::Error;
 use controller::csv_reader::csv_reader;

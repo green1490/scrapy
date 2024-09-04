@@ -1,4 +1,4 @@
-use crate::model::company::Company;
+use crate::{interface::fetch::Fetch, model::company::Company};
 
 pub struct FetchItem {
     pub company: Company,
@@ -6,7 +6,8 @@ pub struct FetchItem {
 }
 
 impl FetchItem {
-    pub fn new(comapny: Company) -> Self {
+    // web_site scraper where impl fetch
+    pub fn new<T:Fetch>(comapny: Company, site_scraper:T) -> Self {
         FetchItem { company:comapny, status:404 }
     }
 
